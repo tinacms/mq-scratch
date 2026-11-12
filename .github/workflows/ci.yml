@@ -27,3 +27,6 @@ jobs:
         with:
           fetch-depth: 2
       - run: echo "event=${{ github.event_name }} sha=$GITHUB_SHA"
+      - name: Hold the queue entry open for tests
+        if: github.event_name == 'merge_group'
+        run: sleep 90
